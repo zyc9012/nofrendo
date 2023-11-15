@@ -24,7 +24,7 @@
 **
 */
 
-#include <SDL.h>
+#include <SDL/SDL.h>
 #include <math.h>
 #include <string.h>
 #include <noftypes.h>
@@ -74,18 +74,6 @@ Uint32 mySDLTimer(Uint32 i)
    {
       return tick_interval;
    }
-}
-
-static int round(double value)
-{
-   int upper, lower;
-   upper = (int) ceil(value);
-   lower = (int) floor(value);
-
-   if (upper - value > value - lower)
-      return lower;
-   else
-      return upper;
 }
 
 int osd_installtimer(int frequency, void *func, int funcsize, void *counter, int countersize)

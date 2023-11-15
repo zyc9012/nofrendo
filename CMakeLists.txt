@@ -27,6 +27,6 @@ file(GLOB_RECURSE SRCS RELATIVE ${CMAKE_SOURCE_DIR} "src/*.c")
 
 add_executable(nofrendo ${SRCS})
 
-find_package(SDL REQUIRED)
-include_directories(${SDL_INCLUDE_DIRS})
-target_link_libraries(nofrendo SDL::SDL)
+find_package(SDL2 REQUIRED)
+include_directories(${SDL2_INCLUDE_DIRS})
+target_link_libraries(nofrendo SDL2::SDL2-static)

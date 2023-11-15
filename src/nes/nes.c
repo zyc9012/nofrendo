@@ -367,6 +367,9 @@ void nes_emulate(void)
    nes.scanline_cycles = 0;
    nes.fiq_cycles = (int) NES_FIQ_PERIOD;
 
+   uint32 frame_time = 1000 / NES_REFRESH_RATE;
+   uint32 frame_start_time = 0;
+
    while (false == nes.poweroff)
    {
       if (nofrendo_ticks != last_ticks)
@@ -394,9 +397,19 @@ void nes_emulate(void)
                || false == nes.autoframeskip)
       {
          frames_to_render = 0;
+         frame_start_time = osd_get_ticks();
+
          nes_renderframe(true);
          system_video(true);
+
+         int remaining_time = (int)frame_time - (int)(osd_get_ticks() - frame_start_time);
+         if (remaining_time > 0)
+         {
+            osd_delay(remaining_time / 2);
+         }
       }
+
+      osd_delay(1); // reduce CPU usage
    }
 }
 

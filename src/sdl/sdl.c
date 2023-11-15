@@ -665,6 +665,16 @@ void osd_getmouse(int *x, int *y, int *button)
    *button = SDL_GetMouseState(x, y);
 }
 
+uint32 osd_get_ticks()
+{
+   return SDL_GetTicks();
+}
+
+void osd_delay(uint32 ms)
+{
+   SDL_Delay(ms);
+}
+
 /*
 ** Shutdown
 */

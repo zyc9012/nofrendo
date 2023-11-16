@@ -304,7 +304,7 @@ static int set_mode(int width, int height)
    if (NULL == myWindow)
    {
       flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE;
-      myWindow = SDL_CreateWindow("Nofrendo", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
+      myWindow = SDL_CreateWindow("Nofrendo", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width * 2, height * 2, flags);
 
       if (NULL == myWindow)
       {
@@ -384,6 +384,7 @@ static void free_write(int num_dirties, rect_t *dirty_rects)
    SDL_UnlockSurface(mySurface);
 
    SDL_Texture *tex = SDL_CreateTextureFromSurface(myRenderer, mySurface);
+   SDL_SetTextureScaleMode(tex, SDL_ScaleModeLinear);
    SDL_RenderCopy(myRenderer, tex, NULL, NULL);
    SDL_RenderPresent(myRenderer);
    SDL_DestroyTexture(tex);

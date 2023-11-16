@@ -38,8 +38,8 @@
 #include <nesinput.h>
 #include <osd.h>
 
-#define  DEFAULT_SAMPLERATE   22050
-#define  DEFAULT_BPS          8
+#define  DEFAULT_SAMPLERATE   44100
+#define  DEFAULT_BPS          16
 #define  DEFAULT_FRAGSIZE     1024
 
 #define  DEFAULT_WIDTH        256

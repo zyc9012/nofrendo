@@ -109,6 +109,8 @@ static SDL_AudioDeviceID myAudio;
 /* this is the callback that SDL calls to obtain more audio data */
 static void sdl_audio_player(void *udata, unsigned char *stream, int len)
 {
+   memset(stream, 0, len);
+
    /* SDL requests buffer fills in terms of bytes, not samples */
    if (16 == sound_bps)
       len /= 2;

@@ -50,17 +50,17 @@ typedef  unsigned char  uint8;
 typedef  unsigned short uint16;
 typedef  unsigned int   uint32;
 
-#ifndef __cplusplus
+#if !defined(__cplusplus) && !defined(__bool_true_false_are_defined)
 typedef enum
 {
    false = 0,
    true = 1
 } bool;
+#endif
 
 #ifndef  NULL
 #define  NULL     ((void *) 0)
 #endif
-#endif /* !__cplusplus */
 
 #include <memguard.h>
 #include <log.h>

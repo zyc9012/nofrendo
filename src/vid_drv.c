@@ -24,6 +24,7 @@
 */
 
 #include <string.h>
+#include <stdint.h>
 #include <noftypes.h>
 #include <log.h>
 #include <bitmap.h>
@@ -61,7 +62,7 @@ static viddriver_t *driver = NULL;
 INLINE int vid_memcmp(const void *p1, const void *p2, int len)
 {
    /* check for 32-bit aligned data */
-   if (0 == (((uint32) p1 & 3) | ((uint32) p2 & 3)))
+   if (0 == (((uintptr_t) p1 & 3) | ((uintptr_t) p2 & 3)))
    {
       uint32 *dw1 = (uint32 *) p1;
       uint32 *dw2 = (uint32 *) p2;
